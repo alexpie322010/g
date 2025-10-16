@@ -15,24 +15,38 @@
       text-align: center;
       margin: 0;
       padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+
     h1 {
-      font-size: 3em;
-      margin: 20px 0;
+      font-size: 6vw; /* scales with screen width */
+      margin-top: 20px;
       letter-spacing: 0.1em;
     }
+
     #counter {
-      font-size: 7em;
+      font-size: 15vw; /* fills most of screen */
       letter-spacing: 0.1em;
+      margin: auto 0;
+    }
+
+    .footer {
+      font-size: 2vw;
+      margin-bottom: 20px;
+      color: red;
     }
   </style>
 </head>
 <body>
   <h1>GOVERNMENT SHUTDOWN COUNTER</h1>
   <div id="counter">00:00:00:00</div>
+  <div class="footer">govshutdown.vercel.app</div>
 
   <script>
-    // Start date: October 1, 12:00:01
+    // Start date: October 1, 2025 12:00:01
     const startDate = new Date("October 1, 2025 12:00:01").getTime();
 
     function updateCounter() {
@@ -61,4 +75,3 @@
   </script>
 </body>
 </html>
-
