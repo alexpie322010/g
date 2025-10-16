@@ -28,13 +28,9 @@
     }
 
     #counter {
-      font-size: 8vw;
+      font-size: 10vw;
       letter-spacing: 0.1em;
-      margin: 10px 0;
-    }
-
-    #ad-container, #backup-ad {
-      margin: 5px auto;
+      margin: auto 0;
     }
 
     .footer {
@@ -49,27 +45,6 @@
 
   <!-- Counter -->
   <div id="counter">000:00:00</div>
-
-  <!-- ✅ Adsterra Ad -->
-  <div id="ad-container">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : '5a2cc3d6c4a0a377327c2b5fa6f317cc',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/5a2cc3d6c4a0a377327c2b5fa6f317cc/invoke.js"></script>
-  </div>
-
-  <!-- ✅ Backup Ad (hidden by default) -->
-  <div id="backup-ad" style="display:none; text-align:center;">
-    <a href="https://your-link-here.com" target="_blank">
-      <img src="your-backup-banner.jpg" alt="Backup Ad" width="160" height="600">
-    </a>
-  </div>
 
   <!-- Footer -->
   <div class="footer">govshutdown.vercel.app</div>
@@ -102,25 +77,6 @@
 
     setInterval(updateCounter, 1000);
     updateCounter();
-  </script>
-
-  <!-- Adsterra Blank/Transparent Detection -->
-  <script>
-    setTimeout(() => {
-      const adFrame = document.querySelector("#ad-container iframe");
-      if (adFrame) {
-        const rect = adFrame.getBoundingClientRect();
-        const isInvisible = rect.width === 0 || rect.height === 0;
-        if (isInvisible) {
-          console.log("Adsterra served a blank/transparent ad. Swapping with backup.");
-          document.getElementById("ad-container").style.display = "none";
-          document.getElementById("backup-ad").style.display = "block";
-        }
-      } else {
-        document.getElementById("ad-container").style.display = "none";
-        document.getElementById("backup-ad").style.display = "block";
-      }
-    }, 3000); // wait 3s for ad to load
   </script>
 
   <!-- ✅ Vercel Analytics -->
