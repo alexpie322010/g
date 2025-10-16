@@ -57,14 +57,13 @@
 
       const diff = nowEST - startDate.getTime();
 
-      // Total time in seconds
       const totalSeconds = Math.floor(diff / 1000);
-      const hours = Math.floor(totalSeconds / 3600); // grows indefinitely
+      const hours = Math.floor(totalSeconds / 3600);
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
       const formatted =
-        String(hours).padStart(3, '0') + ":" + // 3 digits
+        String(hours).padStart(3, '0') + ":" +
         String(minutes).padStart(2, '0') + ":" +
         String(seconds).padStart(2, '0');
 
@@ -74,6 +73,9 @@
     setInterval(updateCounter, 1000);
     updateCounter();
   </script>
+
+  <!-- ✅ Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 
