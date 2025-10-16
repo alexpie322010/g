@@ -42,39 +42,39 @@
 </head>
 <body>
   <h1>GOVERNMENT SHUTDOWN COUNTER</h1>
-  <div id="counter">00:00:00:000</div>
+  <div id="counter">0000:00:00</div>
   <div class="footer">govshutdown.vercel.app</div>
 
   <script>
     // Start date: September 30, 2025 11:59:00 PM EST
-    // Force EST regardless of viewer location by using UTC offset -5
     const startDate = new Date(Date.UTC(2025, 8, 30, 23 + 5, 59, 0, 0)); 
-    // (Month is 0-indexed: 8 = September, and +5 adjusts to UTC since EST = UTC-5)
+    // Month is 0-based: 8 = September, +5 adjusts to UTC since EST = UTC-5
 
     function updateCounter() {
       const now = new Date();
-      const nowUTC = now.getTime() + (now.getTimezoneOffset() * 60000); // UTC timestamp
-      const nowEST = nowUTC - (5 * 60 * 60 * 1000); // adjust UTC → EST
+      const nowUTC = now.getTime() + (now.getTimezoneOffset() * 60000); // convert to UTC
+      const nowEST = nowUTC - (5 * 60 * 60 * 1000); // shift UTC → EST
 
       const diff = nowEST - startDate.getTime();
 
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      const milliseconds = Math.floor(diff % 1000);
+      // Total time in seconds
+      const totalSeconds = Math.floor(diff / 1000);
+      const hours = Math.floor(totalSeconds / 3600); // keeps going up forever
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
 
       const formatted =
-        String(hours).padStart(2, '0') + ":" +
+        String(hours).padStart(4, '0') + ":" + // 4 digits for long shutdowns
         String(minutes).padStart(2, '0') + ":" +
-        String(seconds).padStart(2, '0') + ":" +
-        String(milliseconds).padStart(3, '0');
+        String(seconds).padStart(2, '0');
 
       document.getElementById("counter").textContent = formatted;
     }
 
-    setInterval(updateCounter, 10); // update every 10 ms
+    setInterval(updateCounter, 1000);
     updateCounter();
   </script>
 </body>
 </html>
+
 
