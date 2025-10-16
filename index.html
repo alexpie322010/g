@@ -59,12 +59,12 @@
 
       // Total time in seconds
       const totalSeconds = Math.floor(diff / 1000);
-      const hours = Math.floor(totalSeconds / 3600); // keeps going up forever
+      const hours = Math.floor(totalSeconds / 3600); // grows indefinitely
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
       const formatted =
-        String(hours).padStart(4, '0') + ":" + // 4 digits for long shutdowns
+        String(hours).padStart(3, '0') + ":" + // 3 digits
         String(minutes).padStart(2, '0') + ":" +
         String(seconds).padStart(2, '0');
 
