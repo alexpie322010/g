@@ -22,27 +22,47 @@
     }
 
     h1 {
-      font-size: 3vw;
-      margin-top: 20px;
+      font-size: 2.5vw; /* slightly smaller */
+      margin-top: 10px;
       letter-spacing: 0.1em;
     }
 
     #counter {
-      font-size: 10vw;
+      font-size: 8vw; /* reduced a bit so ad fits */
       letter-spacing: 0.1em;
-      margin: auto 0;
+      margin: 10px 0;
+    }
+
+    #ad-container {
+      margin: 5px auto;
     }
 
     .footer {
-      font-size: 1.5vw;
-      margin-bottom: 20px;
+      font-size: 1.3vw;
+      margin-bottom: 10px;
       color: red;
     }
   </style>
 </head>
 <body>
   <h1>GOVERNMENT SHUTDOWN COUNTER</h1>
+
   <div id="counter">000:00:00</div>
+
+  <!-- ✅ Ad Section -->
+  <div id="ad-container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '5a2cc3d6c4a0a377327c2b5fa6f317cc',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/5a2cc3d6c4a0a377327c2b5fa6f317cc/invoke.js"></script>
+  </div>
+
   <div class="footer">govshutdown.vercel.app</div>
 
   <script>
