@@ -22,44 +22,50 @@
     }
 
     h1 {
-      font-size: 6vw; /* scales with screen width */
+      font-size: 3vw; /* smaller than before */
       margin-top: 20px;
       letter-spacing: 0.1em;
     }
 
     #counter {
-      font-size: 15vw; /* fills most of screen */
+      font-size: 10vw; /* smaller than before, but still the largest */
       letter-spacing: 0.1em;
       margin: auto 0;
     }
 
     .footer {
-      font-size: 2vw;
+      font-size: 1.5vw;
       margin-bottom: 20px;
       color: red;
+    }
+
+    .blink {
+      visibility: hidden;
     }
   </style>
 </head>
 <body>
   <h1>GOVERNMENT SHUTDOWN COUNTER</h1>
-  <div id="counter">00:00:00:00</div>
+  <div id="counter">00:00<span id="colon">:</span>00:00</div>
   <div class="footer">govshutdown.vercel.app</div>
 
   <script>
     // Start date: October 1, 2025 12:00:01
     const startDate = new Date("October 1, 2025 12:00:01").getTime();
+    const colon = document.getElementById("colon");
 
     function updateCounter() {
       const now = new Date().getTime();
       const diff = now - startDate;
 
-      // Convert milliseconds into days/hours/minutes/seconds
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      // Format with leading zeros
+      // Toggle blinking colon
+      colon.style.visibility = (seconds % 2 === 0) ? "visible" : "hidden";
+
       const formatted = 
         String(days).padStart(2, '0') + ":" +
         String(hours).padStart(2, '0') + ":" +
@@ -69,9 +75,9 @@
       document.getElementById("counter").textContent = formatted;
     }
 
-    // Update every second
     setInterval(updateCounter, 1000);
     updateCounter();
   </script>
 </body>
 </html>
+
